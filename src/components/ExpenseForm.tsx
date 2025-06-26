@@ -5,9 +5,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const expenseFormSchema = z.object({
   description: z
     .string()
-    .min(3, { message: "description should at least be 3 characters!" }),
-  amount: z.number().min(1),
-  category: z.string().min(4),
+    .min(3, { message: "Description should be at least 3 characters!" }),
+  amount: z.number({ invalid_type_error: "Amount is required." }).min(1),
+  category: z
+    .string({ invalid_type_error: "Category is required." })
+    .min(4, { message: "Category is required." }),
 });
 
 type FormData = z.infer<typeof expenseFormSchema>;
@@ -45,6 +47,9 @@ const ExpenseForm = () => {
           id="amount"
           className="form-control"
         />
+        {errors.amount && (
+          <p className="text-danger">{errors.amount.message}</p>
+        )}
       </div>
       <div className="mb-3">
         <label htmlFor="category" className="form-label">
@@ -56,13 +61,13 @@ const ExpenseForm = () => {
           id="category"
           className="form-select"
         >
-          <option></option>
+          <option value=" "></option>
           <option value="some">Groceries</option>
           <option value="some">Utilities</option>
           <option value="some">Entertainment</option>
         </select>
       </div>
-      <button disabled={!isValid} type="submit" className="btn btn-primary">
+      <button disabled={!true} type="submit" className="btn btn-primary">
         Add
       </button>
     </form>
