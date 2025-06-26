@@ -16,6 +16,16 @@ const ViewExpenses = () => {
           </select>
         </div>
       </form>
+      <div className="mb-3 mt-3">
+        <ul className="list-group list-group-horizontal">
+          <li className="list-group-item">An item</li>
+          <li className="list-group-item">A second item</li>
+          <li className="list-group-item">A third item</li>
+          <li className="list-group-item">
+            <button className="btn  btn-outline-danger">Delete</button>
+          </li>
+        </ul>
+      </div>
     </>
   );
 };
