@@ -1,7 +1,8 @@
 import React from "react";
+import ExpenseForm from "./ExpenseForm";
 
 const Expenses = () => {
-  return <div>Expenses</div>;
+  return <ExpenseForm />;
 };
 
 export default Expenses;
